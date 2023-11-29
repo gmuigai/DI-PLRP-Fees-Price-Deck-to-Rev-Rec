@@ -1,0 +1,24 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Rev_Rec"
+  DTS:DTSID="{A8828C07-D401-4197-BDFB-81F67A32A02C}"
+  DTS:CreationName="OLEDB">
+  <DTS:PropertyExpression
+    DTS:Name="InitialCatalog">@[$Project::RevRec_Database]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="Password">@[$Project::RevRec_Password]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="ServerName">@[$Project::RevRec_Server]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="UserName">@[$Project::RevRec_UserName]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=172.17.5.10;User ID=DataIntegrationETL;Initial Catalog=Rev_Rec;Provider=SQLNCLI11.1;Persist Security Info=True;Application Name=SSIS-Package-{A8828C07-D401-4197-BDFB-81F67A32A02C}REPORTDB01.ARCHER.local.Rev_Rec.gmuigai;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA5CMiBo0kDEC8bcgI0x8LUgAAAAACAAAAAAADZgAAwAAAABAAAAAKfnw1ilaP60ROC33GKc3lAAAAAASAAACgAAAAEAAAAO4nuA0QtsbUxE9ACTJiQKKAAAAA/O3tyfUgsBeWgvnimD0NN4OSCONZtz6Ayu0WmdP5HBK8i2jyRIK1+liBRkGhyguYTJHho5d+lXDdHF63c/ZRgb9zn9rJpvMf0voqSPIElIYEY5oT9STcnR/R5MH1wUJDS28dUFYIKkYM98gWA8ZO3mjQhcBtxxlUHvv03bB2klAUAAAAEoXe+ReHOQQSFBVJsJnRR9FeYrE=</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

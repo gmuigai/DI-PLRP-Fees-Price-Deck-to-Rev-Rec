@@ -1,0 +1,1002 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/5/2023 11:24:01 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DAL-LAT3NFBTQ3"
+  DTS:CreatorName="ARCHER\gmuigai"
+  DTS:DTSID="{761F9F13-766D-4E11-BA20-7A26CDC8A65C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="PLRP Fees by Tort and Collector"
+  DTS:PackageType="5"
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{A4AAC048-C25E-40DF-9643-82F54EEBCD2D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load PLRP Price Deck"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{6C3DE1DE-7F9D-45CD-9DDD-CBC405FD8ECA}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load PLRP Price Deck"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Load PLRP PriceDeck"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[GGM_PLRPFeesByTortAndCollector]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Connections[OleDbConnection]"
+                  connectionManagerID="{A8828C07-D401-4197-BDFB-81F67A32A02C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Rev_Rec]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].Columns[TortID]"
+                      cachedDataType="r8"
+                      cachedName="TortID"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[TortID]"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[TortID]" />
+                    <inputColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].Columns[Tort]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Tort"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[Tort]"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[Tort]" />
+                    <inputColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].Columns[IsMT]"
+                      cachedDataType="r8"
+                      cachedName="IsMT"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[IsMT]"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[IsMT]" />
+                    <inputColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].Columns[CollectorID]"
+                      cachedDataType="r8"
+                      cachedName="CollectorID"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[CollectorID]"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[CollectorID]" />
+                    <inputColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].Columns[CollectorName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CollectorName"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[CollectorName]"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[CollectorName]" />
+                    <inputColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].Columns[LienOrClaimant]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="LienOrClaimant"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[LienOrClaimant]"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[LienOrClaimant]" />
+                    <inputColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].Columns[LienCode]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="LienCode"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[LienCode]"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[LienCode]" />
+                    <inputColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].Columns[Fee_01]"
+                      cachedDataType="cy"
+                      cachedName="Fee_01"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[Fee_01]"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[Fee_01]" />
+                    <inputColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].Columns[Fee_02]"
+                      cachedDataType="cy"
+                      cachedName="Fee_02"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[Fee_02]"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[Fee_02]" />
+                    <inputColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].Columns[Fee_03]"
+                      cachedDataType="cy"
+                      cachedName="Fee_03"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[Fee_03]"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[Fee_03]" />
+                    <inputColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].Columns[EIF_Fee_01]"
+                      cachedDataType="cy"
+                      cachedName="EIF_Fee_01"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[EIF_Fee_01]"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[EIF_Fee_01]" />
+                    <inputColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].Columns[EIF_Fee_02]"
+                      cachedDataType="cy"
+                      cachedName="EIF_Fee_02"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[EIF_Fee_02]"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[EIF_Fee_02]" />
+                    <inputColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].Columns[EIF_Fee_03]"
+                      cachedDataType="cy"
+                      cachedName="EIF_Fee_03"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[EIF_Fee_03]"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[EIF_Fee_03]" />
+                    <inputColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].Columns[DataSource]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DataSource"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[DataSource]"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[DataSource]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[TortID]"
+                      dataType="r8"
+                      name="TortID" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[Tort]"
+                      dataType="wstr"
+                      length="255"
+                      name="Tort" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[IsMT]"
+                      dataType="bool"
+                      name="IsMT" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[CollectorID]"
+                      dataType="r8"
+                      name="CollectorID" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[CollectorName]"
+                      dataType="wstr"
+                      length="255"
+                      name="CollectorName" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[LienOrClaimant]"
+                      dataType="wstr"
+                      length="255"
+                      name="LienOrClaimant" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[LienCode]"
+                      dataType="wstr"
+                      length="255"
+                      name="LienCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[Fee_01]"
+                      dataType="cy"
+                      name="Fee_01" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[Fee_02]"
+                      dataType="cy"
+                      name="Fee_02" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[Fee_03]"
+                      dataType="cy"
+                      name="Fee_03" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[EIF_Fee_01]"
+                      dataType="cy"
+                      name="EIF_Fee_01" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[EIF_Fee_02]"
+                      dataType="cy"
+                      name="EIF_Fee_02" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[EIF_Fee_03]"
+                      dataType="cy"
+                      name="EIF_Fee_03" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[DataSource]"
+                      dataType="wstr"
+                      length="255"
+                      name="DataSource" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[AddedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="AddedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[DateAdded]"
+                      dataType="dbDate"
+                      name="DateAdded" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[COMMENTS_01]"
+                      dataType="nText"
+                      name="COMMENTS_01" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[COMMENTS_02]"
+                      dataType="nText"
+                      name="COMMENTS_02" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input].ExternalColumns[RunDate]"
+                      dataType="dbTimeStamp"
+                      name="RunDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="PLRP Excel PriceDeck"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sheet1$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Connections[OleDbConnection]"
+                  connectionManagerID="{74D71C69-B15D-4032-A5CB-44CCDE353FD6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PLRP Price Deck]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[TortID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[TortID]"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[TortID]"
+                      name="TortID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[Tort]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[Tort]"
+                      length="255"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[Tort]"
+                      name="Tort"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[IsMT]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[IsMT]"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[IsMT]"
+                      name="IsMT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[CollectorID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[CollectorID]"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[CollectorID]"
+                      name="CollectorID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[CollectorName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[CollectorName]"
+                      length="255"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[CollectorName]"
+                      name="CollectorName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[LienOrClaimant]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[LienOrClaimant]"
+                      length="255"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[LienOrClaimant]"
+                      name="LienOrClaimant"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[LienCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[LienCode]"
+                      length="255"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[LienCode]"
+                      name="LienCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[Fee_01]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[Fee_01]"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[Fee_01]"
+                      name="Fee_01"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[Fee_02]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[Fee_02]"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[Fee_02]"
+                      name="Fee_02"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[Fee_03]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[Fee_03]"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[Fee_03]"
+                      name="Fee_03"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[EIF_Fee_01]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[EIF_Fee_01]"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[EIF_Fee_01]"
+                      name="EIF_Fee_01"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[EIF_Fee_02]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[EIF_Fee_02]"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[EIF_Fee_02]"
+                      name="EIF_Fee_02"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[EIF_Fee_03]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[EIF_Fee_03]"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[EIF_Fee_03]"
+                      name="EIF_Fee_03"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[DataSource]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[DataSource]"
+                      length="255"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[DataSource]"
+                      name="DataSource"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[AddedBy]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[AddedBy]"
+                      length="255"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[AddedBy]"
+                      name="AddedBy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[DateAdded]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[DateAdded]"
+                      length="255"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[DateAdded]"
+                      name="DateAdded"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[COMMENTS_01]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[COMMENTS_01]"
+                      length="255"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[COMMENTS_01]"
+                      name="COMMENTS_01"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[COMMENTS_02]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[COMMENTS_02]"
+                      length="255"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].Columns[COMMENTS_02]"
+                      name="COMMENTS_02"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[TortID]"
+                      dataType="r8"
+                      name="TortID" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[Tort]"
+                      dataType="wstr"
+                      length="255"
+                      name="Tort" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[IsMT]"
+                      dataType="r8"
+                      name="IsMT" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[CollectorID]"
+                      dataType="r8"
+                      name="CollectorID" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[CollectorName]"
+                      dataType="wstr"
+                      length="255"
+                      name="CollectorName" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[LienOrClaimant]"
+                      dataType="wstr"
+                      length="255"
+                      name="LienOrClaimant" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[LienCode]"
+                      dataType="wstr"
+                      length="255"
+                      name="LienCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[Fee_01]"
+                      dataType="cy"
+                      name="Fee_01" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[Fee_02]"
+                      dataType="cy"
+                      name="Fee_02" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[Fee_03]"
+                      dataType="cy"
+                      name="Fee_03" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[EIF_Fee_01]"
+                      dataType="cy"
+                      name="EIF_Fee_01" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[EIF_Fee_02]"
+                      dataType="cy"
+                      name="EIF_Fee_02" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[EIF_Fee_03]"
+                      dataType="cy"
+                      name="EIF_Fee_03" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[DataSource]"
+                      dataType="wstr"
+                      length="255"
+                      name="DataSource" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[AddedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="AddedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[DateAdded]"
+                      dataType="wstr"
+                      length="255"
+                      name="DateAdded" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[COMMENTS_01]"
+                      dataType="wstr"
+                      length="255"
+                      name="COMMENTS_01" />
+                    <externalMetadataColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output].ExternalColumns[COMMENTS_02]"
+                      dataType="wstr"
+                      length="255"
+                      name="COMMENTS_02" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[TortID]"
+                      dataType="r8"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[TortID]"
+                      name="TortID" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[Tort]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[Tort]"
+                      name="Tort" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[IsMT]"
+                      dataType="r8"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[IsMT]"
+                      name="IsMT" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[CollectorID]"
+                      dataType="r8"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[CollectorID]"
+                      name="CollectorID" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[CollectorName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[CollectorName]"
+                      name="CollectorName" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[LienOrClaimant]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[LienOrClaimant]"
+                      name="LienOrClaimant" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[LienCode]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[LienCode]"
+                      name="LienCode" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[Fee_01]"
+                      dataType="cy"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[Fee_01]"
+                      name="Fee_01" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[Fee_02]"
+                      dataType="cy"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[Fee_02]"
+                      name="Fee_02" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[Fee_03]"
+                      dataType="cy"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[Fee_03]"
+                      name="Fee_03" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[EIF_Fee_01]"
+                      dataType="cy"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[EIF_Fee_01]"
+                      name="EIF_Fee_01" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[EIF_Fee_02]"
+                      dataType="cy"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[EIF_Fee_02]"
+                      name="EIF_Fee_02" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[EIF_Fee_03]"
+                      dataType="cy"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[EIF_Fee_03]"
+                      name="EIF_Fee_03" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[DataSource]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[DataSource]"
+                      name="DataSource" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[AddedBy]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[AddedBy]"
+                      name="AddedBy" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[DateAdded]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[DateAdded]"
+                      name="DateAdded" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[COMMENTS_01]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[COMMENTS_01]"
+                      name="COMMENTS_01" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[COMMENTS_02]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[COMMENTS_02]"
+                      name="COMMENTS_02" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load PLRP Price Deck.Paths[Excel Source Output]"
+              endId="Package\Load PLRP Price Deck\Load PLRP PriceDeck.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Load PLRP Price Deck\PLRP Excel PriceDeck.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load PriceDeck to History Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D35AA075-A6F5-4429-8D57-F126A50095AB}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load PriceDeck to History Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A8828C07-D401-4197-BDFB-81F67A32A02C}"
+          SQLTask:SqlStatementSource="Insert into [Rev_Rec].[dbo].[GGM_PLRPFeesByTortAndCollectorHistory]&#xA;(TortID, Tort, IsMT, CollectorID, CollectorName, LienOrClaimant, LienCode, Fee_01, Fee_02, Fee_03, EIF_Fee_01, EIF_Fee_02, EIF_Fee_03, DataSource,&#xA;[AddedBy],[DateAdded],[COMMENTS_01],[COMMENTS_02], ArchiveDate)&#xA;select TortID, Tort, IsMT, CollectorID, CollectorName, LienOrClaimant, LienCode, Fee_01, Fee_02, Fee_03, EIF_Fee_01, EIF_Fee_02, EIF_Fee_03, DataSource,&#xA;[AddedBy],[DateAdded],[COMMENTS_01],[COMMENTS_02], Getdate()&#xA;from [Rev_Rec].[dbo].[GGM_PLRPFeesByTortAndCollector]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate PLRP Price Deck"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{506248D0-F6DA-40D7-87C2-454AEBED9AEF}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate PLRP Price Deck"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A8828C07-D401-4197-BDFB-81F67A32A02C}"
+          SQLTask:SqlStatementSource="Truncate Table [Rev_Rec].[dbo].[GGM_PLRPFeesByTortAndCollector]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update RunDate"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A00BB6EA-89DE-413D-8487-6DF341600584}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update RunDate"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A8828C07-D401-4197-BDFB-81F67A32A02C}"
+          SQLTask:SqlStatementSource="Update [Rev_Rec].[dbo].[GGM_PLRPFeesByTortAndCollector]&#xA;Set RunDate = Getdate()" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{2EBF10B0-AB9F-49F5-B835-8DC96A047324}"
+      DTS:From="Package\Load PriceDeck to History Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Truncate PLRP Price Deck" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{393D21CB-BEEE-4D9E-AEF5-AE2255E70604}"
+      DTS:From="Package\Truncate PLRP Price Deck"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Load PLRP Price Deck" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{AB7CD5D8-F3C2-4D9A-A2BE-1A8CD16ACCF1}"
+      DTS:From="Package\Load PLRP Price Deck"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Update RunDate" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="188,42.6666666666667"
+          Id="Package\Load PLRP Price Deck"
+          TopLeft="464.916656291733,276.105269107793" />
+        <NodeLayout
+          Size="232,42.6666666666667"
+          Id="Package\Load PriceDeck to History Table"
+          TopLeft="429.916656813274,114.631581857924" />
+        <NodeLayout
+          Size="206.666666666667,42.6666666666667"
+          Id="Package\Truncate PLRP Price Deck"
+          TopLeft="455.541656431432,196.052636022053" />
+        <NodeLayout
+          Size="158.666666666667,42.6666666666667"
+          Id="Package\Update RunDate"
+          TopLeft="473.041656170661,365.736849742253" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="545.916656813274,157.298248524591">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12.9583329514911,38.7543874974617"
+              Start="0,0"
+              End="12.9583329514911,31.2543874974617">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.3771937487308" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.3771937487308"
+                    Point2="0,19.3771937487308"
+                    Point3="4,19.3771937487308" />
+                  <mssgle:LineSegment
+                    End="8.95833295149112,19.3771937487308" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.95833295149112,19.3771937487308"
+                    Point2="12.9583329514911,19.3771937487308"
+                    Point3="12.9583329514911,23.3771937487308" />
+                  <mssgle:LineSegment
+                    End="12.9583329514911,31.2543874974617" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="558.895823028249,238.71930268872">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.385966419073"
+              Start="0,0"
+              End="0,29.885966419073">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.885966419073" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="555.645822897864,318.771935774458">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.9649139677938"
+              Start="0,0"
+              End="0,39.4649139677938">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.4649139677938" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load PLRP Price Deck">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="188,42.6666666666667"
+          Id="Package\Load PLRP Price Deck\PLRP Excel PriceDeck"
+          TopLeft="856.000000447035,78.4736840688621" />
+        <NodeLayout
+          Size="185.333333333334,42.6666666666667"
+          Id="Package\Load PLRP Price Deck\Load PLRP PriceDeck"
+          TopLeft="861,381" />
+        <EdgeLayout
+          Id="Package\Load PLRP Price Deck.Paths[Excel Source Output]"
+          TopLeft="951.833333556851,121.140350735529">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,259.859649264471"
+              Start="0,0"
+              End="0,252.359649264471">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,252.359649264471" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load PLRP Price Deck\Load PLRP PriceDeck">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load PLRP Price Deck\PLRP Excel PriceDeck">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
